@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class Fib extends Component {
-    state = {
-        seenIndexes: [],
-        values: {},
-        index: ''
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            seenIndexes: [],
+            values: {},
+            index: ''
+        };
+    }
 
-    async componentDidMount() {
+    componentDidMount() {
         this.fetchValues()
         this.fetchIndexes()
     }
@@ -33,6 +36,8 @@ class Fib extends Component {
             index: this.state.index
         })
         this.setState({ index: '' })
+        this.fetchIndexes()
+        this.fetchValues()
     }
 
     renderSeenIndexes() {
